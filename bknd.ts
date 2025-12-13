@@ -4,6 +4,8 @@ import { sqlite } from 'bknd/adapter/sqlite'
 import type { App, BkndConfig } from 'bknd'
 import { Api } from 'bknd/client'
 import type { Context } from 'hono'
+import { Hono } from 'hono'
+import { serveStatic } from 'hono/bun'
 
 const connection = sqlite({ url: ':memory:' })
 const config = {
@@ -50,3 +52,10 @@ export async function getApi(app: App) {
   })
   return api
 }
+
+export const bkndApp = new Hono()
+
+bkndApp.use('/assets/*', serveStatic({ root: './node_modules/bknd/dist/static' }))
+bkndApp.all('/api/*', async (c) => bkndAppFetch(c))
+bkndApp.get('/admin', async (c) => bkndAppFetch(c))
+bkndApp.get('/admin/*', async (c) => bkndAppFetch(c))

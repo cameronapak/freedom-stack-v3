@@ -1,15 +1,10 @@
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/bun'
 import { Layout } from './layouts'
-import { bkndAppFetch } from '../bknd.ts'
+import { bkndApp } from '../bknd.ts'
 
 const app = new Hono()
 
-app.use('/assets/*', serveStatic({ root: './node_modules/bknd/dist/static' }))
-app.all('/api/*', async (c) => bkndAppFetch(c))
-app.get('/admin', async (c) => bkndAppFetch(c))
-app.get('/admin/*', async (c) => bkndAppFetch(c))
-
+app.route('/', bkndApp)
 app.get('/', (c) =>
   c.html(
     <Layout>
