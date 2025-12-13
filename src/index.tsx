@@ -1,12 +1,14 @@
 import { Hono } from 'hono'
+import { serveStatic } from 'hono/bun'
 import { Layout } from './layouts'
 import { bkndAppFetch } from '../bknd.ts'
 
 const app = new Hono()
 
-app.all('/api/*', async (c) => bkndAppFetch(c.req.raw))
-app.get('/admin', async (c) => bkndAppFetch(c.req.raw))
-app.get('/admin/*', async (c) => bkndAppFetch(c.req.raw))
+app.use('/assets/*', serveStatic({ root: './public/bknd' }))
+app.all('/api/*', async (c) => bkndAppFetch(c))
+app.get('/admin', async (c) => bkndAppFetch(c))
+app.get('/admin/*', async (c) => bkndAppFetch(c))
 
 app.get('/', (c) =>
   c.html(

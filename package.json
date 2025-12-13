@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "predev": "bknd copy-assets --out public/bknd --clean",
     "dev": "bun run --hot src/index.tsx"
   },
   "devDependencies": {
