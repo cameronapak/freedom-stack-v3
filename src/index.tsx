@@ -5,7 +5,7 @@ import { bkndAppFetch } from '../bknd.ts'
 
 const app = new Hono()
 
-app.use('/assets/*', serveStatic({ root: './public/bknd' }))
+app.use('/assets/*', serveStatic({ root: './node_modules/bknd/dist/static' }))
 app.all('/api/*', async (c) => bkndAppFetch(c))
 app.get('/admin', async (c) => bkndAppFetch(c))
 app.get('/admin/*', async (c) => bkndAppFetch(c))
