@@ -20,3 +20,7 @@ To run:
 ```bash
 bun run dev
 ```
+
+## For Agents
+
+- [Hono](https://hono.dev/llms.txt)
