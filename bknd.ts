@@ -9,7 +9,7 @@ import { serveStatic } from 'hono/bun'
 import type { CodeMode } from 'bknd/modes'
 import { writer } from 'bknd/adapter/bun'
 
-const connection = sqlite({ url: ':memory:' })
+const connection = sqlite({ url: 'file:./data.db' })
 const config = {
   connection,
   config: {
