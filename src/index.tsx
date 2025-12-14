@@ -9,9 +9,9 @@ app.get('/', (c) =>
   c.html(
     <Layout>
       <section class="p-6">
-        <h1>Hello!</h1>
+        <h1 class="text-4xl font-bold">Hello!</h1>
         <div class="flex flex-wrap items-center gap-2">
-          <a href="/admin" class="uk-btn uk-btn-default">
+          <a href="/admin" class="btn">
             Admin
           </a>
         </div>

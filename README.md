@@ -3,7 +3,7 @@
 ## Uses
 
 - [Bun](https://bun.sh)
-- [Franken UI](https://franken-ui.dev/)
+- [Basecoat CSS](https://franken-ui.dev/)
 - [Hono](https://hono.dev)
 - [Bknd](https://bknd.io)
 

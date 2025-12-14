@@ -1,5 +1,6 @@
 import type { FC, PropsWithChildren } from 'hono/jsx'
 import type { Child } from 'hono/jsx/dom'
+import { css, Style } from 'hono/css'
 
 type Props = {
   title?: string
@@ -8,16 +9,22 @@ type Props = {
 
 export const Layout: FC = ({ title = 'Home', children, head = null }: PropsWithChildren<Props>) => {
   return (
-    <html lang="en">
+    <html lang="en" class="dark">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.1/dist/css/core.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/franken-ui@2.1.1/dist/css/utilities.min.css" />
+        <Style>{css`
+          [un-cloak] {
+            display: none;
+          }
+        `}</Style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/basecoat.cdn.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+        <script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/js/all.min.js" defer></script>
         {head}
       </head>
-      <body>{children}</body>
+      <body un-cloak>{children}</body>
     </html>
   )
 }
