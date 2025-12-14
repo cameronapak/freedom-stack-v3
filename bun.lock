@@ -6,6 +6,7 @@
       "name": "freedom-stack-v3",
       "dependencies": {
         "@awesome.me/webawesome": "^3.0.0",
+        "@starfederation/datastar-sdk": "^1.0.0-RC.3",
         "bknd": "^0.19.0",
         "hono": "^4.10.8",
       },
@@ -219,6 +220,8 @@
     "@shoelace-style/animations": ["@shoelace-style/animations@1.2.0", "", {}, "sha512-avvo1xxkLbv2dgtabdewBbqcJfV0e0zCwFqkPMnHFGbJbBHorRFfMAHh1NG9ymmXn0jW95ibUVH03E1NYXD6Gw=="],
 
     "@shoelace-style/localize": ["@shoelace-style/localize@3.2.1", "", {}, "sha512-r4C9C/5kSfMBIr0D9imvpRdCNXtUNgyYThc4YlS6K5Hchv1UyxNQ9mxwj+BTRH2i1Neits260sR3OjKMnplsFA=="],
+
+    "@starfederation/datastar-sdk": ["@starfederation/datastar-sdk@1.0.0-RC.3", "", {}, "sha512-ORnV4cvhwWk+oHXos54SFVcA/fhRSzJqM0dN3i3aqGRlJ5WrM7lCGkgWNqw4Lj96QnlPu1+63avDfHQ3bTF3Cw=="],
 
     "@tanstack/devtools-event-client": ["@tanstack/devtools-event-client@0.3.5", "", {}, "sha512-RL1f5ZlfZMpghrCIdzl6mLOFLTuhqmPNblZgBaeKfdtk5rfbjykurv+VfYydOFXj0vxVIoA2d/zT7xfD7Ph8fw=="],
 

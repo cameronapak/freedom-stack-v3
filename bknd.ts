@@ -6,6 +6,8 @@ import { Api } from 'bknd/client'
 import type { Context } from 'hono'
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/bun'
+import type { CodeMode } from 'bknd/modes'
+import { writer } from 'bknd/adapter/bun'
 
 const connection = sqlite({ url: ':memory:' })
 const config = {
@@ -34,7 +36,14 @@ const config = {
     adminBasepath: '/admin',
     logoReturnPath: '/../',
   },
-} as BkndConfig
+  writer,
+  typesFilePath: 'src/bknd-types.d.ts',
+  isProduction: process.env?.PROD === 'true',
+  syncSchema: {
+    force: true,
+    drop: true,
+  },
+} as CodeMode<BkndConfig>
 
 export async function getBkndApp(context: Context) {
   const app = await createRuntimeApp(config, context)
@@ -46,9 +55,10 @@ export async function bkndAppFetch(context: Context) {
   return app.fetch(context.req.raw)
 }
 
-export async function getApi(app: App) {
+export async function getApi(context: Context) {
+  const bkndApp = await getBkndApp(context)
   const api = new Api({
-    fetcher: app.server.request as typeof fetch,
+    fetcher: bkndApp.server.request as typeof fetch,
   })
   return api
 }

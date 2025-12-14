@@ -22,6 +22,7 @@ export const Layout: FC = ({ title = 'Home', children, head = null }: PropsWithC
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/basecoat.cdn.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
         <script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/js/all.min.js" defer></script>
+        <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.6/bundles/datastar.js"></script>
         {head}
       </head>
       <body un-cloak>{children}</body>
