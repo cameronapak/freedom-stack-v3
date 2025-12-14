@@ -2,6 +2,7 @@ import { Hono, type Context } from 'hono'
 import { Layout } from './layouts'
 import { bkndApp, getApi } from '../bknd.ts'
 import { ServerSentEventGenerator } from '@starfederation/datastar-sdk/web'
+import { TodoListItem } from './components/todo-list-item.tsx'
 
 const app = new Hono()
 
@@ -19,11 +20,11 @@ app.get('/', async (c) => {
           </a>
         </div>
 
-        <div id="posts">
+        <ul id="posts">
           {todos?.map((todo) => {
-            return <div>{todo.title}</div>
+            return <TodoListItem todoId={todo.id} key={todo.id} title={todo.title} checked={todo.done} />
           })}
-        </div>
+        </ul>
 
         <form data-on:submit="@post('/submit-post')" class="form grid gap-6">
           <textarea data-bind="post" placeholder="I like to..." rows={3}></textarea>
@@ -47,16 +48,31 @@ app.post('/submit-post', async (c: Context) => {
   }
 
   if (reader.signals.post) {
-    await bkndApi.data.createOne('todos', {
+    const todo = await bkndApi.data.createOne('todos', {
       title: reader.signals.post,
       done: false,
     })
+
+    return ServerSentEventGenerator.stream((stream) => {
+      stream.patchElements((<TodoListItem todoId={todo.id} title={reader.signals.post as string} />).toString(), {
+        selector: '#posts',
+        mode: 'append',
+      })
+      stream.patchSignals(JSON.stringify({ post: '' }))
+    })
+  }
+})
+
+app.post('/toggle-todo/:id/:checked', async (c: Context) => {
+  const reader = await ServerSentEventGenerator.readSignals(c.req.raw)
+  const bkndApi = await getApi(c)
+
+  if (!reader.success) {
+    console.error('Error reading signals:', reader.error)
+    return
   }
 
-  return ServerSentEventGenerator.stream((stream) => {
-    stream.patchElements((<div>{reader.signals.post}</div>).toString(), { selector: '#posts', mode: 'append' })
-    stream.patchSignals(JSON.stringify({ post: '' }))
-  })
+  await bkndApi.data.updateOne('todos', c.req.param('id'), { done: c.req.param('checked') === 'true' })
 })
 
 app.notFound((c) => {
