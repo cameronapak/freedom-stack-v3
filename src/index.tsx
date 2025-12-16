@@ -1,8 +1,8 @@
-import { Hono, type Context } from 'hono'
-import { Layout } from './layouts'
-import { bkndApp, getApi } from '../bknd.ts'
 import { ServerSentEventGenerator } from '@starfederation/datastar-sdk/web'
+import { type Context, Hono } from 'hono'
+import { bkndApp, getApi } from '../bknd.ts'
 import { TodoListItem } from './components/todo-list-item.tsx'
+import { Layout } from './layouts'
 
 const app = new Hono()
 
@@ -63,16 +63,18 @@ app.post('/submit-post', async (c: Context) => {
   }
 })
 
+// TODO - Facing issue when trying to update todo list item and it's not being replaced...
 app.post('/toggle-todo/:id/:checked', async (c: Context) => {
-  const reader = await ServerSentEventGenerator.readSignals(c.req.raw)
   const bkndApi = await getApi(c)
-
-  if (!reader.success) {
-    console.error('Error reading signals:', reader.error)
-    return
-  }
-
-  await bkndApi.data.updateOne('todos', c.req.param('id'), { done: c.req.param('checked') === 'true' })
+  const todo = await bkndApi.data.updateOne('todos', c.req.param('id'), {
+    done: c.req.param('checked') === 'true',
+  })
+  return ServerSentEventGenerator.stream((stream) => {
+    stream.patchElements((<TodoListItem todoId={todo.id} title={todo.title as string} checked={todo.done} />).toString(), {
+      selector: `li#task-${todo.id}`,
+      mode: 'replace',
+    })
+  })
 })
 
 app.notFound((c) => {
