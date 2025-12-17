@@ -40,7 +40,6 @@ app.get('/', async (c) => {
 
 app.post('/submit-post', async (c: Context) => {
   const reader = await ServerSentEventGenerator.readSignals(c.req.raw)
-  const bkndApi = await getApi(c)
 
   if (!reader.success) {
     console.error('Error reading signals:', reader.error)
@@ -48,6 +47,7 @@ app.post('/submit-post', async (c: Context) => {
   }
 
   if (reader.signals.post) {
+    const bkndApi = await getApi(c)
     const todo = await bkndApi.data.createOne('todos', {
       title: reader.signals.post,
       done: false,
