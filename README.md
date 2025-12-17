@@ -2,10 +2,10 @@
 
 ## Uses
 
-- [Bun](https://bun.sh)
-- [Basecoat CSS](https://franken-ui.dev/)
-- [Hono](https://hono.dev)
-- [Bknd](https://bknd.io)
+- [Bun](https://bun.sh) - Package manager and runtime
+- [Hono](https://hono.dev) - Web server library
+- [Basecoat CSS](https://basecoatui.com/) - Shadcn UI-like component CSS library without the need for React
+- [Bknd](https://bknd.io) - Comprehensive backend SDK with auth, db, and admin GUI
 
 ## How To
 
@@ -20,7 +20,3 @@ To run:
 ```bash
 bun run dev
 ```
-
-## For Agents
-
-- [Hono](https://hono.dev/llms.txt)
