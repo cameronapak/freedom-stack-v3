@@ -25,3 +25,4 @@ When needing additional context, use web search, context7 MCP, or grep.app MCP t
 - [BasecoatCSS](https://basecoatui.com/llms.txt)
 - [BasecoatCSS Kitchen Sink of Components](https://basecoatui.com/kitchen-sink/)
 - [Datastar](https://data-star.dev/docs)
+- [Bknd](https://docs.bknd.io/llms-full.txt)
