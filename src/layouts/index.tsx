@@ -1,6 +1,6 @@
+import { css, Style } from 'hono/css'
 import type { FC, PropsWithChildren } from 'hono/jsx'
 import type { Child } from 'hono/jsx/dom'
-import { css, Style } from 'hono/css'
 
 type Props = {
   title?: string
