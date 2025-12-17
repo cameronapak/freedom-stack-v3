@@ -63,7 +63,6 @@ app.post('/submit-post', async (c: Context) => {
   }
 })
 
-// TODO - Facing issue when trying to update todo list item and it's not being replaced...
 app.post('/toggle-todo/:id/:checked', async (c: Context) => {
   const bkndApi = await getApi(c)
   const todo = await bkndApi.data.updateOne('todos', c.req.param('id'), {
