@@ -24,3 +24,4 @@ When needing additional context, use web search, context7 MCP, or grep.app MCP t
 - [Hono](https://hono.dev/llms.txt)
 - [BasecoatCSS](https://basecoatui.com/llms.txt)
 - [BasecoatCSS Kitchen Sink of Components](https://basecoatui.com/kitchen-sink/)
+- [Datastar](https://data-star.dev/docs)
