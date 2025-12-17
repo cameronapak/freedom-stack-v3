@@ -70,10 +70,7 @@ app.post('/toggle-todo/:id/:checked', async (c: Context) => {
     done: c.req.param('checked') === 'true',
   })
   return ServerSentEventGenerator.stream((stream) => {
-    stream.patchElements((<TodoListItem todoId={todo.id} title={todo.title as string} checked={todo.done} />).toString(), {
-      selector: `li#task-${todo.id}`,
-      mode: 'replace',
-    })
+    stream.patchElements((<TodoListItem todoId={todo.id} title={todo.title as string} checked={todo.done} />).toString())
   })
 })
 
