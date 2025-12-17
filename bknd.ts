@@ -1,7 +1,8 @@
 import { createRuntimeApp } from 'bknd/adapter'
-import { em, entity, boolean, text } from 'bknd'
+import { em, entity, text, date } from 'bknd'
 import { sqlite } from 'bknd/adapter/sqlite'
-import type { App, BkndConfig } from 'bknd'
+import type { BkndConfig } from 'bknd'
+import { syncTypes, timestamps } from 'bknd/plugins'
 import { Api } from 'bknd/client'
 import type { Context } from 'hono'
 import { Hono } from 'hono'
@@ -14,9 +15,8 @@ const config = {
   connection,
   config: {
     data: em({
-      todos: entity('todos', {
-        title: text(),
-        done: boolean(),
+      posts: entity('posts', {
+        content: text(),
       }),
     }).toJSON(),
   },
@@ -31,6 +31,23 @@ const config = {
   },
   options: {
     mode: 'code',
+    plugins: [
+      timestamps({ 
+         // the entities to add timestamps to
+         entities: ["posts"],
+         // whether to set the `updated_at` field on create, defaults to true
+         setUpdatedOnCreate: true,
+      }),
+
+      syncTypes({ 
+        // whether to enable the plugin, make sure to disable in production
+        enabled: true,
+        // your writing function (required)
+        write: async (et) => {
+           await Bun.write("bknd-types.d.ts", et.toString());
+        },
+      }),
+    ],
   },
   adminOptions: {
     adminBasepath: '/admin',
