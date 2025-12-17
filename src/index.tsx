@@ -9,7 +9,7 @@ const app = new Hono()
 app.route('/', bkndApp)
 app.get('/', async (c) => {
   const bkndApi = await getApi(c)
-  const { data: todos } = await bkndApi.data.readMany('todos')
+  const { data: todos } = await bkndApi.data.readMany('todos', { limit: 500 })
   return c.html(
     <Layout>
       <section data-signals:post="''" class="flex flex-col gap-4 grow p-6">
