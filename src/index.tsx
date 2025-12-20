@@ -4,7 +4,7 @@ import { bkndApp, getApi } from '../bknd.ts'
 import { PostItem } from './components/post-item.tsx'
 import { Layout } from './layouts'
 import { EmptyState } from './components/empty-state.tsx'
-import { Trash } from './components/icons/trash.tsx'
+import { Message } from './components/icons/message.tsx'
 
 const app = new Hono()
 
@@ -52,7 +52,7 @@ app.get('/', async (c) => {
               id="empty-state"
               title="No Posts Yet"
               description=" You haven't created any posts yet. Share your thoughts with your first microblog post!"
-              icon={<Trash />}
+              icon={<Message />}
             />
           )}
         </div>
@@ -130,7 +130,7 @@ app.delete('/delete-post/:postId', async (c: Context) => {
               id="empty-state"
               title="No Posts Yet"
               description=" You haven't created any posts yet. Share your thoughts with your first microblog post!"
-              icon={<Trash />}
+              icon={<Message />}
             />
           ).toString(),
           {
