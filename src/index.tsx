@@ -3,6 +3,8 @@ import { type Context, Hono } from 'hono'
 import { bkndApp, getApi } from '../bknd.ts'
 import { PostItem } from './components/post-item.tsx'
 import { Layout } from './layouts'
+import { EmptyState } from './components/empty-state.tsx'
+import { Trash } from './components/icons/trash.tsx'
 
 const app = new Hono()
 
@@ -46,33 +48,12 @@ app.get('/', async (c) => {
               })}
             </ul>
           ) : (
-            <div
+            <EmptyState
               id="empty-state"
-              class="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-lg border-dashed p-6 text-center text-balance md:p-12 text-neutral-800 dark:text-neutral-300"
-            >
-              <header class="flex max-w-sm flex-col items-center gap-2 text-center">
-                <div class="mb-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <title>Trash</title>
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                </div>
-                <h3 class="text-lg font-medium tracking-tight">No Posts Yet</h3>
-                <p class="text-muted-foreground text-sm/relaxed">
-                  You haven't created any posts yet. Share your thoughts with your first microblog post!
-                </p>
-              </header>
-            </div>
+              title="No Posts Yet"
+              description=" You haven't created any posts yet. Share your thoughts with your first microblog post!"
+              icon={<Trash />}
+            />
           )}
         </div>
       </section>
@@ -145,32 +126,12 @@ app.delete('/delete-post/:postId', async (c: Context) => {
         // Replace entire posts container content with empty state
         stream.patchElements(
           (
-            <div
+            <EmptyState
               id="empty-state"
-              class="flex min-w-0 flex-1 flex-col items-center justify-center gap-6 rounded-lg border-dashed p-6 text-center text-balance md:p-12 text-neutral-800 dark:text-neutral-300"
-            >
-              <header class="flex max-w-sm flex-col items-center gap-2 text-center">
-                <div class="mb-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 bg-muted text-foreground flex size-10 shrink-0 items-center justify-center rounded-lg [&_svg:not([class*='size-'])]:size-6">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                </div>
-                <h3 class="text-lg font-medium tracking-tight">No Posts Yet</h3>
-                <p class="text-muted-foreground text-sm/relaxed">
-                  You haven't created any posts yet. Share your thoughts with your first microblog post!
-                </p>
-              </header>
-            </div>
+              title="No Posts Yet"
+              description=" You haven't created any posts yet. Share your thoughts with your first microblog post!"
+              icon={<Trash />}
+            />
           ).toString(),
           {
             selector: '#posts-container',
