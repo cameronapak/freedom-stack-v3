@@ -1,5 +1,5 @@
 import { createRuntimeApp } from 'bknd/adapter'
-import { em, entity, text, date } from 'bknd'
+import { em, entity, text } from 'bknd'
 import { sqlite } from 'bknd/adapter/sqlite'
 import type { BkndConfig } from 'bknd'
 import { syncTypes, timestamps } from 'bknd/plugins'
@@ -32,19 +32,19 @@ const config = {
   options: {
     mode: 'code',
     plugins: [
-      timestamps({ 
-         // the entities to add timestamps to
-         entities: ["posts"],
-         // whether to set the `updated_at` field on create, defaults to true
-         setUpdatedOnCreate: true,
+      timestamps({
+        // the entities to add timestamps to
+        entities: ['posts'],
+        // whether to set the `updated_at` field on create, defaults to true
+        setUpdatedOnCreate: true,
       }),
 
-      syncTypes({ 
+      syncTypes({
         // whether to enable the plugin, make sure to disable in production
         enabled: true,
         // your writing function (required)
         write: async (et) => {
-           await Bun.write("bknd-types.d.ts", et.toString());
+          await Bun.write('bknd-types.d.ts', et.toString())
         },
       }),
     ],
