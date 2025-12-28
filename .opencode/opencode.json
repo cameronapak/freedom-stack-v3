@@ -2,10 +2,7 @@
   "mcp": {
     "context7": {
       "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "environment": {
-        "CONTEXT7APIKEY": "${env:CONTEXT7APIKEY}"
-      }
+      "url": "https://context7.liam.sh/mcp"
     },
     "gh_grep": {
       "type": "remote",
