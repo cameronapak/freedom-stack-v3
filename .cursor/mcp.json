@@ -2,10 +2,7 @@
   "mcpServers": {
     "context7": {
       "type": "http",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": {
-        "CONTEXT7APIKEY": "${env:CONTEXT7APIKEY}"
-      }
+      "url": "https://context7.liam.sh/mcp"
     },
     "gh-grep": {
       "type": "http",
