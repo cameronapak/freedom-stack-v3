@@ -1,8 +1,9 @@
 {
   "mcp": {
     "context7": {
-      "type": "remote",
-      "url": "https://context7.liam.sh/mcp"
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest", "--transport", "stdio"]
     },
     "gh_grep": {
       "type": "remote",
