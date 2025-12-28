@@ -19,43 +19,40 @@
 
 ## AI TOOL USAGE GUIDELINES
 
-### Automatic MCP Configuration 🎉
+### Zero-Setup MCP Configuration ✨
 
-This repository includes **automatic MCP (Model Context Protocol) configurations** for both **Cursor** and **OpenCode**! When you open this repo in either editor, the MCP servers will be automatically configured and ready to use.
+This repository includes **fully automatic, keyless MCP (Model Context Protocol) configurations** for both **Cursor** and **OpenCode**! 
 
-**No manual setup required** - just add your API key and you're ready to go!
+🎉 **No setup required. No API keys. No registration. Everything works immediately.**
 
-### Quick Setup
+When you open this repo in Cursor or OpenCode, both MCP servers are automatically configured and fully functional:
+- ✅ **context7** - Instant access to documentation for popular libraries and frameworks
+- ✅ **grep.app** - Search across all of GitHub for real-world code examples
 
-1. **Copy the environment file:**
-   ```bash
-   cp .env.example .env
-   ```
-
-2. **Add your Context7 API key to `.env`:**
-   - Get your API key from [https://context7.com/dashboard](https://context7.com/dashboard)
-   - Add it to the `.env` file:
-     ```
-     CONTEXT7APIKEY=your_actual_api_key_here
-     ```
-
-3. **Restart your editor** (if it was already open)
-
-That's it! The MCP tools will now be available automatically.
-
-### Available MCP Tools
-
-This repository is configured with the following MCP servers:
-
-1. **context7** - Access comprehensive documentation for frameworks and libraries
-2. **gh-grep** (grep.app) - Search across GitHub repositories for code examples
+**Just open the repo and start coding!** The AI tools have immediate access to documentation and code search.
 
 ### How It Works
 
-- **Cursor**: Reads `.cursor/mcp.json` automatically when you open the repo
-- **OpenCode**: Reads `.opencode/opencode.json` automatically when you open the repo
+The magic happens automatically:
+- **Cursor** reads `.cursor/mcp.json` when you open the repo
+- **OpenCode** reads `.opencode/opencode.json` when you open the repo
+- Both use public, keyless endpoints - no authentication required
+- Zero configuration, zero registration, zero friction
 
-Both configurations use the same `.env` file for API keys, ensuring a consistent experience across editors.
+### Available MCP Tools
+
+Both of these work out of the box with no setup:
+
+1. **context7** (via `https://context7.liam.sh/mcp`)
+   - Access comprehensive documentation for frameworks and libraries
+   - No API key required - uses public keyless endpoint
+   - Provides documentation without requiring registration
+   - Perfect for understanding core concepts and APIs
+
+2. **gh-grep** (via `https://mcp.grep.app`)
+   - Search across GitHub repositories for code examples
+   - No authentication needed
+   - Find real-world implementations instantly
 
 ### When to Use grep.app
 
