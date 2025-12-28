@@ -21,38 +21,59 @@
 
 ### Zero-Setup MCP Configuration ✨
 
-This repository includes **fully automatic, keyless MCP (Model Context Protocol) configurations** for both **Cursor** and **OpenCode**! 
+This repository includes **fully automatic MCP (Model Context Protocol) configurations** for both **Cursor** and **OpenCode** using the **official Upstash Context7 implementation**! 
 
-🎉 **No setup required. No API keys. No registration. Everything works immediately.**
+🎉 **No manual setup required. Everything auto-installs and works immediately.**
 
 When you open this repo in Cursor or OpenCode, both MCP servers are automatically configured and fully functional:
-- ✅ **context7** - Instant access to documentation for popular libraries and frameworks
+- ✅ **context7** - Official Upstash Context7 MCP with automatic installation via npx
 - ✅ **grep.app** - Search across all of GitHub for real-world code examples
 
 **Just open the repo and start coding!** The AI tools have immediate access to documentation and code search.
 
 ### How It Works
 
-The magic happens automatically:
+The magic happens automatically using the official Context7 implementation:
 - **Cursor** reads `.cursor/mcp.json` when you open the repo
 - **OpenCode** reads `.opencode/opencode.json` when you open the repo
-- Both use public, keyless endpoints - no authentication required
-- Zero configuration, zero registration, zero friction
+- **context7** uses the official `@upstash/context7-mcp` package via npx
+- First use automatically installs the package - no manual setup required
+- grep.app uses public endpoint - no authentication needed
+- Zero manual configuration, zero friction
 
 ### Available MCP Tools
 
 Both of these work out of the box with no setup:
 
-1. **context7** (via `https://context7.liam.sh/mcp`)
-   - Access comprehensive documentation for frameworks and libraries
-   - No API key required - uses public keyless endpoint
-   - Provides documentation without requiring registration
+1. **context7** (official Upstash implementation via `npx @upstash/context7-mcp@latest`)
+   - 🚀 **Official Upstash Context7 MCP** - Maximum compatibility and features
+   - 📦 **Auto-installs via npx** - Downloads and runs automatically on first use
+   - 🔓 **No API key required initially** - Basic functionality works without authentication
+   - ⚡ **Optional API key for enhanced features** - Can add `UPSTASH_VECTOR_REST_URL` and `UPSTASH_VECTOR_REST_TOKEN` later
+   - 📖 **Access comprehensive documentation** for frameworks and libraries
+   - ✨ **Latest features** - Always up-to-date with `@latest` tag
    - Perfect for understanding core concepts and APIs
+   - More info: https://context7.com and https://github.com/upstash/context7
 
 2. **gh-grep** (via `https://mcp.grep.app`)
    - Search across GitHub repositories for code examples
    - No authentication needed
    - Find real-world implementations instantly
+
+### Optional: Enhanced Context7 Features
+
+While Context7 works immediately without configuration, you can optionally add an API key for enhanced features:
+
+1. Visit https://console.upstash.com/vector
+2. Create a vector database (if you don't have one)
+3. Copy your REST URL and token
+4. Add to your environment (optional - only needed for enhanced features):
+   ```bash
+   export UPSTASH_VECTOR_REST_URL="your-url"
+   export UPSTASH_VECTOR_REST_TOKEN="your-token"
+   ```
+
+**Note:** This is completely optional! Context7 MCP works great without any API keys using the official Upstash implementation.
 
 ### When to Use grep.app
 
@@ -212,6 +233,8 @@ When needing additional context, use web search, context7 MCP, or grep.app MCP t
 - [BasecoatCSS Kitchen Sink of Components](https://basecoatui.com/kitchen-sink/)
 - [Datastar](https://data-star.dev/docs)
 - [Bknd](https://docs.bknd.io/llms-full.txt)
+- [Context7 Official Site](https://context7.com)
+- [Context7 GitHub Repository](https://github.com/upstash/context7)
 
 ## TIPS FOR AI ASSISTANTS
 
@@ -220,3 +243,4 @@ When needing additional context, use web search, context7 MCP, or grep.app MCP t
 3. **Keep it simple**: Follow the "no complex abstractions" principle
 4. **Be specific**: When searching, use specific framework directives and component names
 5. **Combine tools**: Use grep.app for implementation examples and context7 for conceptual understanding
+6. **Trust the official implementation**: Context7 uses the official @upstash/context7-mcp package for maximum compatibility
