@@ -19,14 +19,43 @@
 
 ## AI TOOL USAGE GUIDELINES
 
+### Automatic MCP Configuration 🎉
+
+This repository includes **automatic MCP (Model Context Protocol) configurations** for both **Cursor** and **OpenCode**! When you open this repo in either editor, the MCP servers will be automatically configured and ready to use.
+
+**No manual setup required** - just add your API key and you're ready to go!
+
+### Quick Setup
+
+1. **Copy the environment file:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Add your Context7 API key to `.env`:**
+   - Get your API key from [https://context7.com/dashboard](https://context7.com/dashboard)
+   - Add it to the `.env` file:
+     ```
+     CONTEXT7APIKEY=your_actual_api_key_here
+     ```
+
+3. **Restart your editor** (if it was already open)
+
+That's it! The MCP tools will now be available automatically.
+
 ### Available MCP Tools
 
-This project is configured to work with the following MCP servers:
+This repository is configured with the following MCP servers:
 
-1. **grep.app** - Search across GitHub repositories for code examples
-2. **context7** - Access comprehensive documentation for frameworks and libraries
+1. **context7** - Access comprehensive documentation for frameworks and libraries
+2. **gh-grep** (grep.app) - Search across GitHub repositories for code examples
 
-See `opencode.jsonc` or `CURSOR_SETUP.md` for configuration details.
+### How It Works
+
+- **Cursor**: Reads `.cursor/mcp.json` automatically when you open the repo
+- **OpenCode**: Reads `.opencode/opencode.json` automatically when you open the repo
+
+Both configurations use the same `.env` file for API keys, ensuring a consistent experience across editors.
 
 ### When to Use grep.app
 
