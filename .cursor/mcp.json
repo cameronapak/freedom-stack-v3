@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "context7": {
-      "type": "http",
-      "url": "https://context7.liam.sh/mcp"
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest", "--transport", "stdio"]
     },
     "gh-grep": {
       "type": "http",
