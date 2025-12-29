@@ -43,6 +43,20 @@
             "config": {
               "required": false
             }
+          },
+          "created_at": {
+            "type": "date",
+            "config": {
+              "type": "datetime",
+              "required": false
+            }
+          },
+          "updated_at": {
+            "type": "date",
+            "config": {
+              "type": "datetime",
+              "required": false
+            }
           }
         },
         "config": {
