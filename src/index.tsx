@@ -18,12 +18,14 @@ app.get('/', async (c) => {
 
   return c.html(
     <Layout>
-      <section data-signals:content="''" class="flex flex-col gap-4 grow p-6">
-        <h1 class="text-4xl font-bold">Microblog</h1>
-        <div class="flex flex-wrap items-center gap-2">
-          <a href="/admin" class="btn">
-            Admin
-          </a>
+      <section data-signals:content="''" class="mx-auto max-w-screen-sm flex flex-col gap-4 grow p-6">
+        <div class="flex items-center gap-2">
+          <h1 class="text-4xl grow font-bold">Microblog</h1>
+          <div class="flex flex-wrap items-center gap-2">
+            <a href="/admin" class="btn-sm-outline">
+              Admin
+            </a>
+          </div>
         </div>
 
         <form data-on:submit="@post('/create-post')" class="form grid gap-6 mb-6">
@@ -35,7 +37,7 @@ app.get('/', async (c) => {
             class="textarea"
           ></textarea>
 
-          <button type="submit" class="btn">
+          <button type="submit" class="w-fit btn justify-self-end">
             Post
           </button>
         </form>
@@ -44,7 +46,14 @@ app.get('/', async (c) => {
           {posts && posts.length > 0 ? (
             <ul id="posts" class="flex flex-col gap-4">
               {posts.map((post) => {
-                return <PostItem postId={post.id} key={post.id} content={post.content as string} createdAt={post.created_at as string} />
+                return (
+                  <PostItem
+                    postId={post.id.toString()}
+                    key={post.id}
+                    content={post.content as string}
+                    createdAt={post.created_at as string}
+                  />
+                )
               })}
             </ul>
           ) : (

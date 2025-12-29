@@ -18,6 +18,10 @@ export const Layout: FC = ({ title = 'Home', children, head = null }: PropsWithC
           [un-cloak] {
             display: none;
           }
+
+          .text-muted-foreground {
+            color: oklch(0.708 0 0);
+          }
         `}</Style>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/basecoat.cdn.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
