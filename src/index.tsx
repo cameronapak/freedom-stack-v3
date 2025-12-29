@@ -20,7 +20,7 @@ app.get('/', async (c) => {
     <Layout>
       <section data-signals:content="''" class="mx-auto max-w-screen-sm flex flex-col gap-4 grow p-6">
         <div class="flex items-center gap-2">
-          <h1 class="text-4xl grow font-bold">Microblog</h1>
+          <h1 class="text-4xl grow font-bold text-muted-foreground">Microblog</h1>
           <div class="flex flex-wrap items-center gap-2">
             <a href="/admin" class="btn-sm-outline">
               Admin
