@@ -13,7 +13,7 @@ app.get('/', async (c) => {
   const bkndApi = await getApi(c)
   const { data: posts } = await bkndApi.data.readMany('posts', {
     limit: 500,
-    sort: '-created_at',
+    // sort: '-created_at',
   })
 
   return c.html(
@@ -72,13 +72,15 @@ app.post('/create-post', async (c: Context) => {
   if (reader.signals.content) {
     const bkndApi = await getApi(c)
     const post = await bkndApi.data.createOne('posts', {
-      content: reader.signals.content,
+      content: reader.signals.content as string,
     })
 
     return ServerSentEventGenerator.stream((stream) => {
       // If posts list already exists, prepend the new post to it
       stream.patchElements(
-        (<PostItem postId={post.id} content={reader.signals.content as string} createdAt={post.created_at as string} />).toString(),
+        (
+          <PostItem postId={post.id.toString()} content={reader.signals.content as string} createdAt={post.created_at as string} />
+        ).toString(),
         {
           selector: '#posts',
           mode: 'prepend',
@@ -89,7 +91,7 @@ app.post('/create-post', async (c: Context) => {
       stream.patchElements(
         (
           <ul id="posts" class="flex flex-col gap-4">
-            <PostItem postId={post.id} content={reader.signals.content as string} createdAt={post.created_at as string} />
+            <PostItem postId={post.id.toString()} content={reader.signals.content as string} createdAt={post.created_at as string} />
           </ul>
         ).toString(),
         {
