@@ -13,7 +13,7 @@ app.get('/', async (c) => {
   const bkndApi = await getApi(c)
   const { data: posts } = await bkndApi.data.readMany('posts', {
     limit: 500,
-    // sort: '-created_at',
+    sort: '-created_at',
   })
 
   return c.html(

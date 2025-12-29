@@ -18,11 +18,18 @@ const config = hybrid({
   app: () => ({
     connection,
     config: {
-      data: em({
-        posts: entity('posts', {
-          content: text(),
-        }),
-      }).toJSON(),
+      data: em(
+        {
+          posts: entity('posts', {
+            content: text(),
+          }),
+        }
+        // Bug: this fails because `Field "created_at" not found on entity "posts"`
+        // This may be a race condition of the timestamps plugin and indexing
+        // ({ index }, { posts }) => {
+        //   index(posts).on(['created_at'])
+        // }
+      ).toJSON(),
     },
     // onBuilt: async (app) => {
     //   // This can only really run locally because it requires
