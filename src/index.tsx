@@ -28,6 +28,7 @@ app.get('/', async (c) => {
           </div>
         </div>
 
+        {/* TODO - I want to only be able to post if I'm authenticated */}
         <form data-on:submit="@post('/create-post')" class="form grid gap-6 mb-6">
           <textarea
             data-bind="content"
