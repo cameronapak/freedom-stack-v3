@@ -7,11 +7,11 @@ import { Api } from 'bknd/client'
 import type { Context } from 'hono'
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/bun'
-import { code, type CodeMode } from 'bknd/modes'
+import { hybrid, type HybridMode } from 'bknd/modes'
 import { writer, reader } from 'bknd/adapter/bun'
 
 const connection = sqlite({ url: 'file:./data.db' })
-const config = code({
+const config = hybrid({
   connection,
   config: {
     data: em({
@@ -30,7 +30,7 @@ const config = code({
     }
   },
   options: {
-    mode: 'code',
+    mode: 'db',
     plugins: [
       timestamps({
         // the entities to add timestamps to
@@ -62,11 +62,16 @@ const config = code({
     force: true,
     drop: true,
   },
-} as CodeMode<BkndConfig>)
+} as HybridMode<BkndConfig>)
+
+let bkndRuntimeAppInstance: Awaited<ReturnType<typeof createRuntimeApp>> | null = null
+let apiInstance: Api | null = null
 
 export async function getBkndApp(context: Context) {
-  const app = await createRuntimeApp(config, context)
-  return app
+  if (!bkndRuntimeAppInstance) {
+    bkndRuntimeAppInstance = await createRuntimeApp(config, context)
+  }
+  return bkndRuntimeAppInstance
 }
 
 export async function bkndAppFetch(context: Context) {
@@ -76,10 +81,12 @@ export async function bkndAppFetch(context: Context) {
 
 export async function getApi(context: Context) {
   const bkndApp = await getBkndApp(context)
-  const api = new Api({
-    fetcher: bkndApp.server.request as typeof fetch,
-  })
-  return api
+  if (!apiInstance) {
+    apiInstance = new Api({
+      fetcher: bkndApp.server.request as typeof fetch,
+    })
+  }
+  return apiInstance
 }
 
 export const bkndApp = new Hono()

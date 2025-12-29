@@ -24,6 +24,8 @@
     }
   },
   "data": {
+    "basepath": "/api/data",
+    "default_primary_format": "integer",
     "entities": {
       "posts": {
         "type": "regular",
@@ -50,9 +52,7 @@
       }
     },
     "relations": {},
-    "indices": {},
-    "basepath": "/api/data",
-    "default_primary_format": "integer"
+    "indices": {}
   },
   "auth": {
     "enabled": false,

@@ -25,7 +25,7 @@ export function PostItem({ postId, content, createdAt }: Props) {
           <p class="text-sm leading-relaxed flex-1">{content}</p>
           <button
             data-on:click={`if(confirm('Are you sure you want to delete this post?')) { @delete('/delete-post/${postId}') }`}
-            class="btn btn-sm"
+            class="btn btn-icon-outline text-white"
             type="button"
             aria-label="Delete post"
           >
