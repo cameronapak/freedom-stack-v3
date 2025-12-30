@@ -2,6 +2,8 @@
 
 A no-build stack built upon Web Standards that feels freeing and can be deployed anywhere.
 
+And for those interested, this stack should work well with AI agents, enabling you to vibe code.
+
 ## Uses
 
 - [Bun](https://bun.sh) - Mostly used for the package manager, but we can use it for the runtime
