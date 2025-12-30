@@ -4,6 +4,8 @@ A no-build stack built upon Web Standards that feels freeing and can be deployed
 
 And for those interested, this stack should work well with AI agents, enabling you to vibe code.
 
+![banner](./banner.png)
+
 > [!IMPORTANT]
 > This README is a work in progress and will improve over time.
 
