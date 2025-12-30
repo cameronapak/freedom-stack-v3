@@ -19,7 +19,7 @@
 
 ## ADDITIONAL CONTEXT
 
-When needing additional context, use web search, context7 MCP, or grep.app MCP tool calls to dig deeper. 
+When needing additional context, you must do deeper research. Here are helper resources.
 
 - [Hono](https://hono.dev/llms.txt)
 - [BasecoatCSS](https://basecoatui.com/llms.txt)
