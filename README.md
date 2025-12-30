@@ -29,7 +29,7 @@ bun run dev
 
 Let's take a stroll down memory lane.
 
-I built the first version of [Freedom Stack](https://github.com/cameronapak/freedom-stack) while learning full-stack web dev. I wanted to help others who were hungry to create have the tools to make their dream a reality—scratching my own itch, basically.
+I built the first version of [Freedom Stack](https://github.com/cameronapak/freedom-stack) while learning full-stack web dev. I wanted to help others who were hungry to create have the tools to make their dream a reality.
 
 Freedom Stack v1: Astro, Astro DB, HTMX, Alpine.js, Better Auth, DaisyUI + TailwindCSS. I used it for a bunch of web apps, including the homescreen of the [Wisephone II](https://wisephone.com/). 
 
