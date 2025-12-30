@@ -18,8 +18,13 @@
 - No complex abstractions - prefer direct solutions
 
 ## ADDITIONAL CONTEXT
-
 When needing additional context, you must do deeper research. Here are helper resources.
+
+### Tool Calls
+
+BasecoatCSS, Datastar, and Bknd are all newer technologies, so you must use `gh_grep` and `context7` MCP tools to do research and get the most up-to-date documentation when you are not certain.
+
+### Resources
 
 - [Hono](https://hono.dev/llms.txt)
 - [BasecoatCSS](https://basecoatui.com/llms.txt)
