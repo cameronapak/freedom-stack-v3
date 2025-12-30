@@ -34,6 +34,7 @@ bun run dev
 
 ## Resources
 
+- [The The Grug Brained Developer](https://grugbrain.dev/), a layman's guide to thinking like the self-aware smol brained
 - [Connect your favorite Postgres or SQLite db to Bknd](https://docs.bknd.io/usage/database/)
 - [Learn about the different modes of Bknd](https://docs.bknd.io/usage/introduction/#modes)
 - [Learn about the Bknd config](https://docs.bknd.io/extending/config/)
