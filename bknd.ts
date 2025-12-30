@@ -31,15 +31,6 @@ const config = hybrid({
         // }
       ).toJSON(),
     },
-    // onBuilt: async (app) => {
-    //   // This can only really run locally because it requires
-    //   // file access...
-    //   try {
-    //     await app.em.schema().sync({ force: true })
-    //   } catch (e) {
-    //     console.error(e)
-    //   }
-    // },
     options: {
       mode: 'db',
       plugins: [
