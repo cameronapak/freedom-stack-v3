@@ -4,6 +4,9 @@ A no-build stack built upon Web Standards that feels freeing and can be deployed
 
 And for those interested, this stack should work well with AI agents, enabling you to vibe code.
 
+> [!IMPORTANT]
+> This README is a work in progress and will improve over time.
+
 ## Uses
 
 - [Bun](https://bun.sh) - Mostly used for the package manager, but we can use it for the runtime
@@ -11,7 +14,7 @@ And for those interested, this stack should work well with AI agents, enabling y
 - [Datastar](https://data-star.dev/) - Hypermedia backend and front-end framework (takes the best of HTMX and Alpine.js)
 - [Basecoat](https://basecoatui.com/) - Shadcn UI-like component CSS library without the need for React
 - [UnoCSS](https://unocss.dev/) - Runtime-build alternative to TailwindCSS
-- [Bknd](https://bknd.io) - Comprehensive backend SDK with auth, db, and admin GUI
+- [Bknd](https://bknd.io) - Comprehensive backend SDK with auth, db, and Admin UI
 
 ## How To
 
@@ -26,6 +29,14 @@ To run:
 ```bash
 bun run dev
 ```
+
+## Resources
+
+- [Connect your favorite Postgres or SQLite db to Bknd](https://docs.bknd.io/usage/database/)
+- [Learn about the different modes of Bknd](https://docs.bknd.io/usage/introduction/#modes)
+- [Learn about the Bknd config](https://docs.bknd.io/extending/config/)
+- [How to host Hono with Netlify](https://hono.dev/docs/getting-started/netlify) or [Vercel](https://hono.dev/docs/getting-started/vercel) or [Cloudflare Workers](https://hono.dev/docs/getting-started/cloudflare-workers)
+- [What is HATEOAS?](https://htmx.org/essays/hateoas/)
 
 ## Why a new version?
 
