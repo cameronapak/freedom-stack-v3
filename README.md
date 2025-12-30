@@ -27,38 +27,42 @@ bun run dev
 
 ## Why a new version?
 
-Let's take a stroll down memory lane. I built the first version of [Freedom Stack](https://github.com/cameronapak/freedom-stack) as a result of learning full-stack web dev and wanting to help others who were hungry to create have the tools to make their dream reality.
+Let's take a stroll down memory lane.
 
-Freedom Stack v1 was built upon Astro, Astro DB, HTMX, Alpine.js, Better Auth, and DaisyUI + TailwindCSS.
+I built the first version of [Freedom Stack](https://github.com/cameronapak/freedom-stack) while learning full-stack web dev. I wanted to help others who were hungry to create have the tools to make their dream a reality—scratching my own itch, basically.
 
-I've used Freedom Stack v1 in many web apps, including using it as the base codebase for the homescreen of the [Wisephone II](https://wisephone.com/)! 
+Freedom Stack v1: Astro, Astro DB, HTMX, Alpine.js, Better Auth, DaisyUI + TailwindCSS. I used it for a bunch of web apps, including the homescreen of the [Wisephone II](https://wisephone.com/). 
 
-Over time, I learned a thing or two. And, AI coding had improved dramatically. I learned what made Freedom Stack great and I learned areas where it could improve, so... I did what any other person would do and created an entirely new version, Freedom Stack v2.
+It's wild to see the postive reception people have had for Freedom Stack.
 
-[Freedom Stack v2](https://github.com/cameronapak/freedom-stack-v2) was built upon Astro, Alpine.js + Alpine AJAX, TailwindCSS v4 + Basecoat UI, and Bknd. 
+Over time, I'd learned in the field. AI coding improved dramatically. I saw what made Freedom Stack great and where it fell short. So I built [Freedom Stack v2](https://github.com/cameronapak/freedom-stack-v2).
 
-If you look closely, you'll see that v2 and v3 have a lot in common. To be honest, I built Freedom Stack v2 and only built one app with it, a skateboard deck designer tool. Even to this day, v2 has remained a work in progress. I _think_ v2 was created to help me better explore [Bknd](https://bknd.io/), the missing link: db, auth, storage, plugins, and workflows built into a single package. 
+v2 was built upon Astro, Alpine.js + Alpine AJAX, TailwindCSS v4 + Basecoat UI, and Bknd.
 
-I am a HUGE fan and believer of [Bknd](https://bknd.io/) because it helps fulfil the desire I had early on with v1 of Freedom Stack: 
+The truth is I only built one app with v2 (a skateboard deck designer). It remains a work in progress. Honestly, I think v2 was really about exploring [Bknd](https://bknd.io/), which gives you db, auth, storage, plugins, and workflows in a single package.
 
-> "I wanted to provide a stack that's powerful like Ruby on Rails _("The One Person Framework")_, but with the ease and "vanilla" web dev feel of Astro."
+I'm a huge believer in Bknd because it fulfills what I wanted from day one:
 
-So... why a v3? 
+> "A stack that's powerful like Ruby on Rails ('The One Person Framework'), but with the ease and 'vanilla' web dev feel of Astro."
 
-Bloat. Bloat is why there's a v3. 
+So... why v3, another version?
 
-For the past two years or so, I've loved working with [Val.Town](https://val.town). Think CodePen or CodeSandbox but it's instantly deployed and live, without having to worry about devops. With Val.Town I learned to love and embrace the Hono web framework and the no-build lifestyle.
+One word: bloat.
 
-But the straw that broke the camels back _(sorry poor camel)_ was that I found I was using Alpine.js in Astro and client-side bundling to do a lot of the logic on the client, oftentimes too much logic on the client. The codebase would often quickly bloat. Even towards the end of 2025, we converted an app constructed on the base of Freedom Stack to instead use React and Tanstack Router and be more of an SPA (single page application). _(aside: It's worth noting that Tanstack and Tanstack Start makes working with React a far, far greater experience.)_
+For the past couple years, I've loved working with [Val.Town](https://val.town). Think CodePen but instantly deployed, no devops headaches. Val.Town taught me to love the Hono web framework and the no-build lifestyle.
 
-Last nitpick... with Alpine and HTMX, because the two libraries are different, they require figuring out how to glue things together. So, when I learned about Datastar through [this conference talk by Delaney Gillian](https://www.youtube.com/watch?v=0K71AyAF6E4), it became the clear solution.
+I was using Alpine.js in Astro with client-side bundling to do too much on the client. Codebases bloated quickly. Late in 2025, because of bloat and slowness, I converted a Freedom Stack app to React + Tanstack Router, going full SPA. _(aside: Anything Tanstack makes using React actually enjoyable.)_
 
-[The Tao of Datastar](https://data-star.dev/guide/the_tao_of_datastar) states that _"Most state should live in the backend. Since the frontend is exposed to the user, the backend should be the source of truth for your application state."_ Honestly... After years of skin in the game, I believe it. That idea is known as HATEOAS (Hypermedia as the Engine of Application State).
+One more thing. Alpine.js and HTMX are different libraries. You have to glue them together. When I found Datastar through [this talk by Delaney Gillilan](https://www.youtube.com/watch?v=0K71AyAF6E4), it became the solution to my Alpine.js and HTMX woes.
 
-So, to ensure most of the state lives in the backend, in v3 I went with a no-build, no-bundle approach so that I was forced to abide by HATEOAS.
+[The Tao of Datastar](https://data-star.dev/guide/the_tao_of_datastar) states that: _"Most state should live in the backend. Since the frontend is exposed to the user, the backend should be the source of truth for your application state."_ That's what's known as HATEOAS (Hypermedia as the Engine of Application State). And after years of building, I believe it.
 
-So, I chose a stack that would actually work with Val.Town, or really be deployable anywhere because it's built on Web Standards. 
+So v3 is no-build, no-bundle. It forces me to keep state on the backend where it belongs. It works with Val.Town. It works anywhere, because it's built on Web Standards.
+
+Freedom Stack v3 is simpler. Lighter. Deployable anywhere.
+
+And that feels freeing.
 
 Welcome to Freedom Stack v3!
 
-— [Cameron Pak](https://cameronpak.com)
+— from [Cameron Pak](https://cameronpak.com)
