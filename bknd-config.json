@@ -63,19 +63,110 @@
           "sort_field": "id",
           "sort_dir": "asc"
         }
+      },
+      "users": {
+        "type": "system",
+        "fields": {
+          "id": {
+            "type": "primary",
+            "config": {
+              "format": "integer",
+              "fillable": false,
+              "required": false
+            }
+          },
+          "email": {
+            "type": "text",
+            "config": {
+              "required": true
+            }
+          },
+          "strategy": {
+            "type": "enum",
+            "config": {
+              "options": {
+                "type": "strings",
+                "values": [
+                  "password"
+                ]
+              },
+              "required": true,
+              "hidden": [
+                "update",
+                "form"
+              ],
+              "fillable": [
+                "create"
+              ]
+            }
+          },
+          "strategy_value": {
+            "type": "text",
+            "config": {
+              "fillable": [
+                "create"
+              ],
+              "hidden": [
+                "read",
+                "table",
+                "update",
+                "form"
+              ],
+              "required": true
+            }
+          },
+          "role": {
+            "type": "enum",
+            "config": {
+              "options": {
+                "type": "objects",
+                "values": []
+              },
+              "required": false
+            }
+          }
+        },
+        "config": {
+          "sort_field": "id",
+          "sort_dir": "asc"
+        }
       }
     },
     "relations": {},
-    "indices": {}
+    "indices": {
+      "idx_unique_users_email": {
+        "entity": "users",
+        "fields": [
+          "email"
+        ],
+        "unique": true
+      },
+      "idx_users_strategy": {
+        "entity": "users",
+        "fields": [
+          "strategy"
+        ],
+        "unique": false
+      },
+      "idx_users_strategy_value": {
+        "entity": "users",
+        "fields": [
+          "strategy_value"
+        ],
+        "unique": false
+      }
+    }
   },
   "auth": {
-    "enabled": false,
+    "enabled": true,
     "basepath": "/api/auth",
     "entity_name": "users",
     "allow_register": true,
     "jwt": {
       "secret": "",
       "alg": "HS256",
+      "expires": 0,
+      "issuer": "",
       "fields": [
         "id",
         "email",
@@ -83,6 +174,7 @@
       ]
     },
     "cookie": {
+      "domain": "",
       "path": "/",
       "sameSite": "lax",
       "secure": true,
@@ -95,8 +187,8 @@
     },
     "strategies": {
       "password": {
-        "type": "password",
         "enabled": true,
+        "type": "password",
         "config": {
           "hashing": "sha256"
         }

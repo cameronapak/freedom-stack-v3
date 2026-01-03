@@ -37,6 +37,7 @@ bun run dev
 - [The The Grug Brained Developer](https://grugbrain.dev/), a layman's guide to thinking like the self-aware smol brained
 - [Connect your favorite Postgres or SQLite db to Bknd](https://docs.bknd.io/usage/database/)
 - [Learn about the different modes of Bknd](https://docs.bknd.io/usage/introduction/#modes)
+- [Learn about and ask AI about bknd via Zread](https://zread.ai/bknd-io/bknd)
 - [Learn about the Bknd config](https://docs.bknd.io/extending/config/)
 - [How to host Hono with Netlify](https://hono.dev/docs/getting-started/netlify) or [Vercel](https://hono.dev/docs/getting-started/vercel) or [Cloudflare Workers](https://hono.dev/docs/getting-started/cloudflare-workers)
 - [What is HATEOAS?](https://htmx.org/essays/hateoas/)
