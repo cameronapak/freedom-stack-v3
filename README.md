@@ -68,9 +68,11 @@ One word: bloat.
 
 For the past couple years, I've loved working with [Val.Town](https://val.town). Think CodePen but instantly deployed, no devops headaches. Val.Town taught me to love the Hono web framework and the no-build lifestyle.
 
-I was using Alpine.js in Astro with client-side bundling to do too much on the client. Codebases bloated quickly. Late in 2025, because of bloat and slowness, I converted a Freedom Stack app to React + Tanstack Router, going full SPA. _(aside: Anything Tanstack makes using React actually enjoyable.)_
+I was using Alpine.js in Astro with client-side bundling to do too much on the client. Codebases bloated quickly. Late in 2025, because of bloat and slowness, I converted a Freedom Stack app to React + Tanstack Router, going full SPA. _(aside: Anything Tanstack makes using React actually enjoyable.)_ 
 
-One more thing. Alpine.js and HTMX are different libraries. You have to glue them together. When I found Datastar through [this talk by Delaney Gillilan](https://www.youtube.com/watch?v=0K71AyAF6E4), it became the solution to my Alpine.js and HTMX woes.
+Alpine.js and HTMX are different libraries. You have to glue them together. When I found Datastar through [this talk by Delaney Gillilan](https://www.youtube.com/watch?v=0K71AyAF6E4), it became the solution to my Alpine.js and HTMX woes.
+
+I began to realize some widely adopted full-stack frameworks like Laravel and Rails had a far clearer separation between backend and front-end because they were each written in different languages. When JS/TS makes up the front-end and the backend, then things seem to get messy faster, in my opinion. 
 
 [The Tao of Datastar](https://data-star.dev/guide/the_tao_of_datastar) states that: _"Most state should live in the backend. Since the frontend is exposed to the user, the backend should be the source of truth for your application state."_ That's what's known as HATEOAS (Hypermedia as the Engine of Application State). And after years of building, I believe it.
 
