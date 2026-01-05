@@ -1,6 +1,6 @@
 # Freedom Stack v3
 
-A no-build stack built upon Web Standards that feels freeing and can be deployed anywhere.
+A no-build, un-bloated stack built upon Web Standards that feels freeing to use and can be deployed anywhere.
 
 ![banner](./banner.png)
 
