@@ -55,6 +55,8 @@ Learn about and ask Zread's AI about...
 - [Hono](https://zread.ai/honojs/hono)
 - [UnoCSS](https://zread.ai/unocss/unocss)
 
+Extend your AI coding agent's understanding of these packages by using the [Zread MCP Server](https://docs.z.ai/devpack/mcp/zread-mcp-server)
+
 ## Why a new version?
 
 Let's take a stroll down memory lane.
