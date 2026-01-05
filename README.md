@@ -2,8 +2,6 @@
 
 A no-build stack built upon Web Standards that feels freeing and can be deployed anywhere.
 
-And for those interested, this stack should work well with AI agents, enabling you to vibe code.
-
 ![banner](./banner.png)
 
 > [!IMPORTANT]
@@ -17,6 +15,10 @@ And for those interested, this stack should work well with AI agents, enabling y
 - [Basecoat](https://basecoatui.com/) - Shadcn UI-like component CSS library without the need for React
 - [UnoCSS](https://unocss.dev/) - Runtime-build alternative to TailwindCSS
 - [Bknd](https://bknd.io) - Comprehensive backend SDK with auth, db, and Admin UI
+
+## AI Coding Agent Ready
+
+Freedom Stack v3 should work well with AI agents, enabling you to vibe code. Comes with an AGENTS.md file and includes grep.app and Context7 MCP servers for those who use OpenCode. 
 
 ## How To
 
