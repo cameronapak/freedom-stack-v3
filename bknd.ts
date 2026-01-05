@@ -59,7 +59,6 @@ const config = hybrid({
 } as HybridMode<BkndConfig>)
 
 let bkndRuntimeAppInstance: Awaited<ReturnType<typeof createRuntimeApp>> | null = null
-let apiInstance: Api | null = null
 
 export async function getBkndApp(context: Context) {
   if (!bkndRuntimeAppInstance) {
@@ -73,14 +72,15 @@ export async function bkndAppFetch(context: Context) {
   return app.fetch(context.req.raw)
 }
 
-export async function getApi(context: Context) {
+export async function getApi(context: Context, opts?: { verify?: boolean }) {
   const bkndApp = await getBkndApp(context)
-  if (!apiInstance) {
-    apiInstance = new Api({
-      fetcher: bkndApp.server.request as typeof fetch,
-    })
+  const api = bkndApp.getApi()
+
+  if (opts?.verify) {
+    await api.verifyAuth()
   }
-  return apiInstance
+
+  return api
 }
 
 export const bkndApp = new Hono()

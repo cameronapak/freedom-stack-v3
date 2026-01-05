@@ -10,11 +10,13 @@ const app = new Hono()
 
 app.route('/', bkndApp)
 app.get('/', async (c) => {
-  const bkndApi = await getApi(c)
+  const bkndApi = await getApi(c, { verify: true })
   const { data: posts } = await bkndApi.data.readMany('posts', {
     limit: 500,
     sort: '-created_at',
   })
+
+  const isAuthenticated = bkndApi.isAuthenticated()
 
   return c.html(
     <Layout>
@@ -28,20 +30,27 @@ app.get('/', async (c) => {
           </div>
         </div>
 
-        {/* TODO - I want to only be able to post if I'm authenticated */}
-        <form data-on:submit="@post('/create-post')" class="form grid gap-6 mb-6">
-          <textarea
-            data-bind="content"
-            data-on:keydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); event.target.closest('form').requestSubmit(); }"
-            placeholder="What's on your mind?"
-            rows={3}
-            class="textarea"
-          ></textarea>
+        {isAuthenticated ? (
+          <form data-on:submit="@post('/create-post')" class="form grid gap-6 mb-6">
+            <textarea
+              data-bind="content"
+              data-on:keydown="if(event.key==='Enter' && !event.shiftKey) { event.preventDefault(); event.target.closest('form').requestSubmit(); }"
+              placeholder="What's on your mind?"
+              rows={3}
+              class="textarea"
+            ></textarea>
 
-          <button type="submit" class="w-fit btn justify-self-end">
-            Post
-          </button>
-        </form>
+            <button type="submit" class="w-fit btn justify-self-end">
+              Post
+            </button>
+          </form>
+        ) : (
+          <div class="flex items-center gap-2 text-sm text-muted-foreground">
+            <a href="/admin" class="btn-sm">
+              Sign in to post
+            </a>
+          </div>
+        )}
 
         <div id="posts-container">
           {posts && posts.length > 0 ? (
@@ -72,6 +81,12 @@ app.get('/', async (c) => {
 })
 
 app.post('/create-post', async (c: Context) => {
+  const bkndApi = await getApi(c, { verify: true })
+
+  if (!bkndApi.isAuthenticated()) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+
   const reader = await ServerSentEventGenerator.readSignals(c.req.raw)
 
   if (!reader.success) {
@@ -80,7 +95,6 @@ app.post('/create-post', async (c: Context) => {
   }
 
   if (reader.signals.content) {
-    const bkndApi = await getApi(c)
     const post = await bkndApi.data.createOne('posts', {
       content: reader.signals.content as string,
     })
@@ -116,6 +130,12 @@ app.post('/create-post', async (c: Context) => {
 })
 
 app.delete('/delete-post/:postId', async (c: Context) => {
+  const bkndApi = await getApi(c, { verify: true })
+
+  if (!bkndApi.isAuthenticated()) {
+    return c.json({ error: 'Authentication required' }, 401)
+  }
+
   const postId = c.req.param('postId')
 
   if (!postId) {
@@ -123,7 +143,6 @@ app.delete('/delete-post/:postId', async (c: Context) => {
   }
 
   try {
-    const bkndApi = await getApi(c)
     await bkndApi.data.deleteOne('posts', postId)
 
     // Check remaining posts count
