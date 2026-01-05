@@ -4,9 +4,10 @@ type Props = {
   postId: string
   content: string
   createdAt?: string | Date
+  showDeleteButton?: boolean
 }
 
-export function PostItem({ postId, content, createdAt }: Props) {
+export function PostItem({ postId, content, createdAt, showDeleteButton = false }: Props) {
   const formatDate = (date?: string | Date) => {
     if (!date) return ''
     const d = typeof date === 'string' ? new Date(date) : date
@@ -23,14 +24,16 @@ export function PostItem({ postId, content, createdAt }: Props) {
       <div class="flex flex-col gap-2">
         <div class="flex items-start justify-between gap-2">
           <p class="text-sm leading-relaxed flex-1">{content}</p>
-          <button
-            data-on:click={`if(confirm('Are you sure you want to delete this post?')) { @delete('/delete-post/${postId}') }`}
-            class="btn btn-icon-secondary text-muted-foreground"
-            type="button"
-            aria-label="Delete post"
-          >
-            <Trash />
-          </button>
+          {showDeleteButton ? (
+            <button
+              data-on:click={`if(confirm('Are you sure you want to delete this post?')) { @delete('/delete-post/${postId}') }`}
+              class="btn btn-icon-secondary text-muted-foreground"
+              type="button"
+              aria-label="Delete post"
+            >
+              <Trash />
+            </button>
+          ) : null}
         </div>
         {createdAt && <time class="text-xs text-muted-foreground">{formatDate(createdAt)}</time>}
       </div>

@@ -10,13 +10,14 @@ const app = new Hono()
 
 app.route('/', bkndApp)
 app.get('/', async (c) => {
-  const bkndApi = await getApi(c, { verify: true })
+  const verifiedBkndApi = await getApi(c, { verify: true })
+  const bkndApi = await getApi(c)
   const { data: posts } = await bkndApi.data.readMany('posts', {
     limit: 500,
     sort: '-created_at',
   })
 
-  const isAuthenticated = bkndApi.isAuthenticated()
+  const isAuthenticated = verifiedBkndApi.isAuthenticated()
 
   return c.html(
     <Layout>
@@ -58,6 +59,7 @@ app.get('/', async (c) => {
               {posts.map((post) => {
                 return (
                   <PostItem
+                    showDeleteButton={isAuthenticated}
                     postId={post.id.toString()}
                     key={post.id}
                     content={post.content as string}
