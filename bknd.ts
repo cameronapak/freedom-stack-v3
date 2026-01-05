@@ -74,7 +74,9 @@ export async function bkndAppFetch(context: Context) {
 
 export async function getApi(context: Context, opts?: { verify?: boolean }) {
   const bkndApp = await getBkndApp(context)
-  const api = bkndApp.getApi()
+  const api = bkndApp.getApi({
+    headers: context.req.raw.headers,
+  })
 
   if (opts?.verify) {
     await api.verifyAuth()
