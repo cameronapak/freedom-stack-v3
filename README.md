@@ -48,9 +48,12 @@ bun run dev
 
 ### Dig Deeper
 
-- [Learn about and ask AI about Bknd via Zread](https://zread.ai/bknd-io/bknd)
-- [Learn about and ask AI about Datastar via Zread](https://zread.ai/starfederation/datastar)
-- [Learn about and ask AI about Hono via Zread](https://zread.ai/honojs/hono)
+Learn about and ask Zread's AI about...
+
+- [Bknd](https://zread.ai/bknd-io/bknd)
+- [Datastar](https://zread.ai/starfederation/datastar)
+- [Hono](https://zread.ai/honojs/hono)
+- [UnoCSS](https://zread.ai/unocss/unocss)
 
 ## Why a new version?
 
