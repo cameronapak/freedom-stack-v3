@@ -24,7 +24,11 @@ Got questions about Freedom Stack v3? [![zread](https://img.shields.io/badge/Ask
 
 ## How To
 
-To install dependencies:
+Click the "use this template" button on GitHub or... [use this template](https://github.com/new?template_name=freedom-stack-v3)
+
+Then, clone the repo to your local machine.
+
+Next, install dependencies:
 
 ```bash
 bun install
