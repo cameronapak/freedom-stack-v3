@@ -50,16 +50,24 @@ bun run dev
 - [Learn about the Bknd config](https://docs.bknd.io/extending/config/)
 - [How to host Hono with Netlify](https://hono.dev/docs/getting-started/netlify) or [Vercel](https://hono.dev/docs/getting-started/vercel) or [Cloudflare Workers](https://hono.dev/docs/getting-started/cloudflare-workers)
 
-### Dig Deeper
+### Dig Deeper with Zread
 
 Learn about and ask Zread's AI about...
 
 - [Bknd](https://zread.ai/bknd-io/bknd)
 - [Datastar](https://zread.ai/starfederation/datastar)
 - [Hono](https://zread.ai/honojs/hono)
+- [Basecoat](https://zread.ai/hunvreus/basecoat)
 - [UnoCSS](https://zread.ai/unocss/unocss)
 
+> [!NOTE]
+> If you find Zread responds in Chinese, you may have to tell it to respond in English. 
+
 Extend your AI coding agent's understanding of these packages by using the [Zread MCP Server](https://docs.z.ai/devpack/mcp/zread-mcp-server)
+
+### Courses
+
+- Lock In Code on YouTube has a fun, free [Datastar Series](https://www.youtube.com/watch?v=I8QLWWPGT-c&list=PLbqyjFEQew904tnpc7dtc6VuyX7HikBfR&index=1)
 
 ## Why a new version?
 
