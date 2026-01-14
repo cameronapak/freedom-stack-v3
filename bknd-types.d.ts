@@ -7,7 +7,16 @@ declare global {
   type BkndEntityUpdate<T extends keyof DB> = Updateable<DB[T]>;
 }
 
+export interface Posts {
+  id: Generated<number>;
+  content: string;
+  url?: string;
+  created_at?: Date | string;
+  updated_at?: Date | string;
+}
+
 interface Database {
+  posts: Posts;
 }
 
 declare module "bknd" {

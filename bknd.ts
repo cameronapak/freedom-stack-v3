@@ -6,11 +6,11 @@ import { timestamps } from 'bknd/plugins'
 import type { Context } from 'hono'
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/bun'
-import { hybrid, type HybridMode } from 'bknd/modes'
+import { code, type CodeMode } from 'bknd/modes'
 import { writer, reader } from 'bknd/adapter/bun'
 
 const connection = sqlite({ url: 'file:./data.db' })
-const config = hybrid({
+const config = code({
   // In bknd v0.19.0, there's a bug where timestamps plugin isn't
   // applied unless the app bknd config is wrapped in an app function
   // {@see https://discord.com/channels/1308395750564302952/1450763950173196445/1451931602589581363}
@@ -45,7 +45,7 @@ const config = hybrid({
     writer,
     reader,
     typesFilePath: 'bknd-types.d.ts',
-    configFilePath: 'bknd-config.json',
+    // configFilePath: 'bknd-config.json',
     isProduction: process.env?.PROD === 'true',
     syncSchema: {
       force: true,
@@ -56,7 +56,7 @@ const config = hybrid({
     adminBasepath: '/admin',
     logoReturnPath: '/../',
   },
-} as HybridMode<BkndConfig>)
+} as CodeMode<BkndConfig>)
 
 let bkndRuntimeAppInstance: Awaited<ReturnType<typeof createRuntimeApp>> | null = null
 
