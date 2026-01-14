@@ -20,7 +20,8 @@ const config = hybrid({
       data: em(
         {
           posts: entity('posts', {
-            content: text(),
+            content: text().required(),
+            url: text(),
           }),
         }
         // Bug: this fails because `Field "created_at" not found on entity "posts"`

@@ -1,10 +1,13 @@
 import { ServerSentEventGenerator } from '@starfederation/datastar-sdk/web'
+import { Defuddle } from 'defuddle/node'
 import { type Context, Hono } from 'hono'
+import { JSDOM } from 'jsdom'
 import { bkndApp, getApi } from '../bknd.ts'
 import { EmptyState } from './components/empty-state.tsx'
 import { Message } from './components/icons/message.tsx'
 import { PostItem } from './components/post-item.tsx'
 import { Layout } from './layouts'
+import { isUrl } from './utils/index.ts'
 
 const app = new Hono()
 
@@ -59,6 +62,7 @@ app.get('/', async (c) => {
               {posts.map((post) => {
                 return (
                   <PostItem
+                    url={post.url}
                     showDeleteButton={isAuthenticated}
                     postId={post.id.toString()}
                     key={post.id}
@@ -97,15 +101,34 @@ app.post('/create-post', async (c: Context) => {
   }
 
   if (reader.signals.content) {
+    let content = reader.signals.content as string
+    const isContentAUrl = isUrl(content)
+
+    // If it's just a URL, let's defuddle it
+    if (isContentAUrl) {
+      const dom = await JSDOM.fromURL(content)
+      const result = await Defuddle(dom)
+      if (result.description) {
+        content = result.description
+      }
+    }
+
     const post = await bkndApi.data.createOne('posts', {
-      content: reader.signals.content as string,
+      content,
+      url: isContentAUrl ? (reader.signals.content as string) : '',
     })
 
     return ServerSentEventGenerator.stream((stream) => {
       // If posts list already exists, prepend the new post to it
       stream.patchElements(
         (
-          <PostItem postId={post.id.toString()} content={reader.signals.content as string} createdAt={post.created_at as string} />
+          <PostItem
+            url={isContentAUrl ? (reader.signals.content as string) : ''}
+            showDeleteButton={true}
+            postId={post.id.toString()}
+            content={content}
+            createdAt={post.created_at as string}
+          />
         ).toString(),
         {
           selector: '#posts',
@@ -117,7 +140,7 @@ app.post('/create-post', async (c: Context) => {
       stream.patchElements(
         (
           <ul id="posts" class="flex flex-col gap-4">
-            <PostItem postId={post.id.toString()} content={reader.signals.content as string} createdAt={post.created_at as string} />
+            <PostItem postId={post.id.toString()} content={content} createdAt={post.created_at as string} />
           </ul>
         ).toString(),
         {

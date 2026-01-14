@@ -4,10 +4,11 @@ type Props = {
   postId: string
   content: string
   createdAt?: string | Date
+  url?: string
   showDeleteButton?: boolean
 }
 
-export function PostItem({ postId, content, createdAt, showDeleteButton = false }: Props) {
+export function PostItem({ postId, content, createdAt, url, showDeleteButton = false }: Props) {
   const formatDate = (date?: string | Date) => {
     if (!date) return ''
     const d = typeof date === 'string' ? new Date(date) : date
@@ -22,6 +23,11 @@ export function PostItem({ postId, content, createdAt, showDeleteButton = false 
   return (
     <li id={`post-${postId}`} class="card p-4 border rounded-lg relative">
       <div class="flex flex-col gap-2">
+        {url && (
+          <a href={url} target="_blank" class="text-xs text-muted-foreground">
+            {url}
+          </a>
+        )}
         <div class="flex items-start justify-between gap-2">
           <p class="text-sm leading-relaxed flex-1">{content}</p>
           {showDeleteButton ? (
