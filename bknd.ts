@@ -6,20 +6,20 @@ import config from './bknd.config'
 
 let bkndRuntimeAppInstance: Awaited<ReturnType<typeof createRuntimeApp>> | null = null
 
-export async function getBkndApp(context: Context) {
+export async function getBkndApp() {
   if (!bkndRuntimeAppInstance) {
-    bkndRuntimeAppInstance = await createRuntimeApp(config, context)
+    bkndRuntimeAppInstance = await createRuntimeApp(config, {})
   }
   return bkndRuntimeAppInstance
 }
 
 export async function bkndAppFetch(context: Context) {
-  const app = await getBkndApp(context)
+  const app = await getBkndApp()
   return app.fetch(context.req.raw)
 }
 
 export async function getApi(context: Context, opts?: { verify?: boolean }) {
-  const bkndApp = await getBkndApp(context)
+  const bkndApp = await getBkndApp()
   const api = bkndApp.getApi({
     headers: context.req.raw.headers,
   })
