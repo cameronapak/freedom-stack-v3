@@ -3,11 +3,19 @@ import { sqlite } from 'bknd/adapter/sqlite'
 import { timestamps } from 'bknd/plugins'
 import { code } from 'bknd/modes'
 import { secureRandomString } from 'bknd/utils'
-import { type BunBkndConfig, writer } from 'bknd/adapter/bun'
+import { type BunBkndConfig, writer, registerLocalMediaAdapter } from 'bknd/adapter/bun'
+
+const local = registerLocalMediaAdapter()
 
 const config = code<BunBkndConfig>({
   connection: sqlite({ url: 'file:data.db' }),
   config: {
+    media: {
+      enabled: true,
+      adapter: local({
+        path: './public/uploads', // Files will be stored in this directory
+      }),
+    },
     data: em(
       {
         posts: entity('posts', {
