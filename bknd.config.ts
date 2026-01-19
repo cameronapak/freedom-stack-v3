@@ -62,6 +62,8 @@ const config = code<BunBkndConfig>({
         setUpdatedOnCreate: true,
       }),
     ],
+    // If you want this seed to run, you must manually run the seed command
+    // `bun node_modules/.bin/bknd sync --seed --force`
     seed: async (ctx) => {
       // create an admin user
       await ctx.app.module.auth.createUser({
