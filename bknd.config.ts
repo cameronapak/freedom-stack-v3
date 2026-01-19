@@ -2,6 +2,7 @@ import { em, entity, text } from 'bknd'
 import { sqlite } from 'bknd/adapter/sqlite'
 import { timestamps } from 'bknd/plugins'
 import { code } from 'bknd/modes'
+import { secureRandomString } from 'bknd/utils'
 import { type BunBkndConfig, writer } from 'bknd/adapter/bun'
 
 const config = code<BunBkndConfig>({
@@ -20,6 +21,37 @@ const config = code<BunBkndConfig>({
       //   index(posts).on(['created_at'])
       // }
     ).toJSON(),
+    auth: {
+      allow_register: true,
+      enabled: true,
+      jwt: {
+        issuer: 'bknd-astro-example',
+        secret: secureRandomString(64),
+      },
+      guard: {
+        enabled: true,
+      },
+      roles: {
+        admin: {
+          implicit_allow: true,
+        },
+        default: {
+          permissions: [
+            'system.access.api',
+            'data.database.sync',
+            'data.entity.create',
+            'data.entity.delete',
+            'data.entity.update',
+            'data.entity.read',
+            'media.file.delete',
+            'media.file.read',
+            'media.file.list',
+            'media.file.upload',
+          ],
+          is_default: true,
+        },
+      },
+    },
   },
   options: {
     plugins: [
@@ -31,7 +63,20 @@ const config = code<BunBkndConfig>({
       }),
     ],
     seed: async (ctx) => {
-      console.log('🌱 SEED FUNCTION CALLED')
+      // create an admin user
+      await ctx.app.module.auth.createUser({
+        email: 'admin@example.com',
+        password: 'password',
+        role: 'admin',
+      })
+
+      // create a user
+      await ctx.app.module.auth.createUser({
+        email: 'user@example.com',
+        password: 'password',
+        role: 'default',
+      })
+
       await ctx.em.mutator('posts').insertMany([
         { content: 'Just shipped a new feature! The feeling of deploying something you built from scratch never gets old.' },
         {
