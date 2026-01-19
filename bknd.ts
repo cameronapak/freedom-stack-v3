@@ -41,6 +41,18 @@ const config = code({
           setUpdatedOnCreate: true,
         }),
       ],
+      seed: async (ctx) => {
+        await ctx.em.mutator('posts').insertMany([
+          { content: 'Just shipped a new feature! The feeling of deploying something you built from scratch never gets old.' },
+          { content: 'Hot take: TypeScript is just documentation that happens to compile.', url: 'https://twitter.com/example/status/123' },
+          { content: 'Today I learned that SQLite can handle way more than most people think. Millions of rows? No problem.' },
+          { content: 'Reading "Designing Data-Intensive Applications" for the third time. Still finding new insights.' },
+          { content: 'Simplicity is the ultimate sophistication. Delete that abstraction you don\'t need yet.' },
+          { content: 'Coffee count today: ☕☕☕☕ (it\'s only 2pm)' },
+          { content: 'The best code is no code. The second best is code someone else already wrote and tested.', url: 'https://github.com/bknd-io/bknd' },
+          { content: 'Debugging tip: explain the problem to a rubber duck. If that fails, explain it to a coworker. If that fails, take a walk.' },
+        ])
+      },
     },
     writer,
     reader,
