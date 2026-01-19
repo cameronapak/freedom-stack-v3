@@ -34,6 +34,7 @@ export async function getApi(context: Context, opts?: { verify?: boolean }) {
 export const bkndApp = new Hono()
 
 bkndApp.use('/assets/*', serveStatic({ root: './node_modules/bknd/dist/static' }))
+bkndApp.use('/uploads/*', serveStatic({ root: './' }))
 bkndApp.all('/api/*', async (c) => bkndAppFetch(c))
 bkndApp.get('/admin', async (c) => bkndAppFetch(c))
 bkndApp.get('/admin/*', async (c) => bkndAppFetch(c))
