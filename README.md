@@ -43,7 +43,7 @@ bun install
 To seed the data:
 
 ```bash
-bun run seed
+bun run seed # There may be issues seeding in code mode in bknd <= v0.20.0
 ```
 
 To run:
