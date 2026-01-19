@@ -40,6 +40,12 @@ To run:
 bun run dev
 ```
 
+To seed the data:
+
+```bash
+bun node_modules/.bin/bknd sync --seed --force
+```
+
 ## Resources
 
 ### Philosophy
