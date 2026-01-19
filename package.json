@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/index.tsx"
+    "dev": "bun run --hot src/index.tsx",
+    "seed": "bun node_modules/.bin/bknd sync --seed --force",
+    "update-bknd-skills": "bunx add-skill cameronapak/bknd-skills"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -15,9 +17,10 @@
   },
   "dependencies": {
     "@starfederation/datastar-sdk": "^1.0.0-RC.3",
-    "bknd": "^0.20.0",
+    "bknd": "0.20.0",
     "defuddle": "^0.6.6",
     "hono": "^4.10.8",
-    "jsdom": "^27.4.0"
+    "jsdom": "^27.4.0",
+    "sqlocal": "^0.16.0"
   }
 }

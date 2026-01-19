@@ -28,10 +28,22 @@ Click the "use this template" button on GitHub or... [use this template](https:/
 
 Then, clone the repo to your local machine.
 
+Get the environment variables set up:
+
+```bash
+cp .env.example .env
+```
+
 Next, install dependencies:
 
 ```bash
 bun install
+```
+
+To seed the data:
+
+```bash
+bun run seed
 ```
 
 To run:
@@ -41,6 +53,16 @@ bun run dev
 ```
 
 ## Resources
+
+### Bknd Skills
+
+[Bknd Skills](https://github.com/cameronapak/bknd-skills/) is included in Freedom Stack v3 to help your AI agent better understand how to work with Bknd. 
+
+To update Bknd Skills, run:
+
+```bash
+bun run update-bknd-skills
+```
 
 ### Philosophy
 
