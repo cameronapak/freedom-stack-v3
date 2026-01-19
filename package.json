@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run --hot src/index.tsx"
+    "dev": "bun run --hot src/index.tsx",
+    "seed": "bun node_modules/.bin/bknd sync --seed --force"
   },
   "devDependencies": {
     "@types/bun": "latest",

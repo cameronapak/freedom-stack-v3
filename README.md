@@ -28,22 +28,28 @@ Click the "use this template" button on GitHub or... [use this template](https:/
 
 Then, clone the repo to your local machine.
 
+Get the environment variables set up:
+
+```bash
+cp .env.example .env
+```
+
 Next, install dependencies:
 
 ```bash
 bun install
 ```
 
+To seed the data:
+
+```bash
+bun run seed
+```
+
 To run:
 
 ```bash
 bun run dev
-```
-
-To seed the data:
-
-```bash
-bun node_modules/.bin/bknd sync --seed --force
 ```
 
 ## Resources

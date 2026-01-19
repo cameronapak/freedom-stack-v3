@@ -65,19 +65,14 @@ const config = code<BunBkndConfig>({
     // If you want this seed to run, you must manually run the seed command
     // `bun node_modules/.bin/bknd sync --seed --force`
     seed: async (ctx) => {
-      // create an admin user
-      await ctx.app.module.auth.createUser({
-        email: 'admin@example.com',
-        password: 'password',
-        role: 'admin',
-      })
-
-      // create a user
-      await ctx.app.module.auth.createUser({
-        email: 'user@example.com',
-        password: 'password',
-        role: 'default',
-      })
+      if (process.env.BKND_SEED_ADMIN_USERNAME && process.env.BKND_SEED_ADMIN_PASSWORD) {
+        // create an admin user
+        await ctx.app.module.auth.createUser({
+          email: process.env.BKND_SEED_ADMIN_USERNAME,
+          password: process.env.BKND_SEED_ADMIN_PASSWORD,
+          role: 'admin',
+        })
+      }
 
       await ctx.em.mutator('posts').insertMany([
         { content: 'Just shipped a new feature! The feeling of deploying something you built from scratch never gets old.' },
@@ -106,6 +101,11 @@ const config = code<BunBkndConfig>({
   syncSchema: {
     force: true,
     drop: true,
+  },
+  syncSecrets: {
+    outFile: '.env',
+    format: 'env',
+    includeSecrets: true,
   },
   adminOptions: {
     adminBasepath: '/admin',
