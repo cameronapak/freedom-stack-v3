@@ -54,6 +54,16 @@ bun run dev
 
 ## Resources
 
+### Bknd Skills
+
+[Bknd Skills](https://github.com/cameronapak/bknd-skills/) is included in Freedom Stack v3 to help your AI agent better understand how to work with Bknd. 
+
+To update Bknd Skills, run:
+
+```bash
+bun run update-bknd-skills
+```
+
 ### Philosophy
 
 - [The The Grug Brained Developer](https://grugbrain.dev/), a layman's guide to thinking like the self-aware smol brained
