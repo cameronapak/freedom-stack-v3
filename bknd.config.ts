@@ -32,6 +32,9 @@ const config = code<BunBkndConfig>({
     auth: {
       allow_register: true,
       enabled: true,
+      cookie: {
+        pathSuccess: '/admin',
+      },
       jwt: {
         issuer: 'bknd-astro-example',
         secret: secureRandomString(64),
