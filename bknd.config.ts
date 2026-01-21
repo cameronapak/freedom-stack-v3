@@ -4,6 +4,8 @@ import { timestamps } from 'bknd/plugins'
 import { code } from 'bknd/modes'
 import { secureRandomString } from 'bknd/utils'
 import { type BunBkndConfig, writer, registerLocalMediaAdapter } from 'bknd/adapter/bun'
+// Uncomment this line if you want to use node instead of bun
+// import { type NodeBkndConfig, writer, registerLocalMediaAdapter } from 'bknd/adapter/node'
 
 const local = registerLocalMediaAdapter()
 
