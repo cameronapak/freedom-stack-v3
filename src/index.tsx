@@ -31,6 +31,11 @@ app.get('/', async (c) => {
             <a href="/admin" class="btn-sm-outline">
               Admin
             </a>
+            {isAuthenticated && (
+              <a href="/api/auth/logout" class="btn-sm-outline">
+                Logout
+              </a>
+            )}
           </div>
         </div>
 
