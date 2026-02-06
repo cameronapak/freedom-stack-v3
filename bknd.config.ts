@@ -113,11 +113,6 @@ const config = code<BunBkndConfig>({
     force: true,
     drop: true,
   },
-  syncSecrets: {
-    outFile: '.env',
-    format: 'env',
-    includeSecrets: true,
-  },
   adminOptions: {
     adminBasepath: '/admin',
     logoReturnPath: '/../',
