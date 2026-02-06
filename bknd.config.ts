@@ -9,6 +9,26 @@ import { type BunBkndConfig, writer, registerLocalMediaAdapter } from 'bknd/adap
 
 const local = registerLocalMediaAdapter()
 
+const schema = em(
+  {
+    posts: entity('posts', {
+      content: text().required(),
+      url: text(),
+    }),
+  }
+  // Bug: this fails because `Field "created_at" not found on entity "posts"`
+  // This may be a race condition of the timestamps plugin and indexing
+  // ({ index }, { posts }) => {
+  //   index(posts).on(['created_at'])
+  // }
+)
+
+// Register the schema to get automatic type completion
+type Database = (typeof schema)['DB']
+declare module 'bknd' {
+  interface DB extends Database {}
+}
+
 const config = code<BunBkndConfig>({
   connection: sqlite({ url: 'file:data.db' }),
   config: {
@@ -18,19 +38,7 @@ const config = code<BunBkndConfig>({
         path: './public/uploads', // Files will be stored in this directory
       }),
     },
-    data: em(
-      {
-        posts: entity('posts', {
-          content: text().required(),
-          url: text(),
-        }),
-      }
-      // Bug: this fails because `Field "created_at" not found on entity "posts"`
-      // This may be a race condition of the timestamps plugin and indexing
-      // ({ index }, { posts }) => {
-      //   index(posts).on(['created_at'])
-      // }
-    ).toJSON(),
+    data: schema.toJSON(),
     auth: {
       allow_register: true,
       enabled: true,
