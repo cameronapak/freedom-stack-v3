@@ -51,7 +51,7 @@ const config = code<BunBkndConfig>({
         secret: secureRandomString(64),
       },
       guard: {
-        enabled: true,
+        enabled: !!(process.env.BKND_SEED_ADMIN_USERNAME && process.env.BKND_SEED_ADMIN_PASSWORD),
       },
       roles: {
         admin: {
