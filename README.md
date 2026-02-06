@@ -9,7 +9,7 @@ A no-build, un-bloated stack built upon Web Standards that feels freeing to use 
 
 ## Uses
 
-- [Bun](https://bun.sh) - Mostly used for the package manager, but we can use it for the runtime
+- [Bun](https://bun.sh) - Used by default for package management and runtime. To use a different runtime (e.g., Node.js), update the imports in [@bknd.config.ts](./bknd.config.ts) to use the appropriate adapter
 - [Hono + Hono JSX](https://hono.dev) - Fast, lightweight, built on Web Standards. Support for any JavaScript runtime.
 - [Datastar](https://data-star.dev/) - Hypermedia backend and front-end framework (takes the best of HTMX and Alpine.js)
 - [Basecoat](https://basecoatui.com/) - Shadcn UI-like component CSS library without the need for React
