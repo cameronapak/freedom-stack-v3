@@ -48,6 +48,9 @@ bun install
 
 To seed the data:
 
+> [!WARNING]
+> Seeding will be broken until https://github.com/bknd-io/bknd/pull/339 is merged into bknd, so you may decide to not use bknd's code mode at this time.
+
 ```bash
 bun run seed # There may be issues seeding in code mode in bknd <= v0.20.0
 ```
