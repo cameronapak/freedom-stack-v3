@@ -28,13 +28,13 @@ export function PostItem({ postId, content, createdAt, url, showDeleteButton = f
             {url}
           </a>
         )}
-        <div class="flex items-start justify-between gap-2">
-          <p>{content}</p>
+        <div class="x-stack">
+          <p class="grow">{content}</p>
           {showDeleteButton ? (
             <button
               data-on:click={`if(confirm('Are you sure you want to delete this post?')) { @delete('/delete-post/${postId}') }`}
-              class="btn btn-icon-secondary text-muted-foreground"
               type="button"
+              data-variant="secondary"
               aria-label="Delete post"
             >
               <Trash />
