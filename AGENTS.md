@@ -11,7 +11,7 @@
 - Component exports: `export function ComponentName()`
 - Props interface: `type Props = { ... }`
 - File naming: kebab-case for files (todo-list-item.tsx)
-- Use CSS classes via UnoCSS/Basecoat patterns
+- Use CSS classes via UnoCSS and Semantics UI patterns
 - Error handling: simple console.error for debugging
 - Keep components single-responsibility
 - Use async/await for API calls
@@ -22,12 +22,11 @@ When needing additional context, you must do deeper research. Here are helper re
 
 ### Tool Calls
 
-BasecoatCSS, Datastar, and Bknd are all newer technologies, so you must use `gh_grep` and `context7` MCP tools to do research and get the most up-to-date documentation when you are not certain.
+Semantics UI, Datastar, and Bknd are all newer technologies, so you must use `gh_grep` and `context7` MCP tools to do research and get the most up-to-date documentation when you are not certain.
 
 ### Resources
 
 - [Hono](https://hono.dev/llms.txt)
-- [BasecoatCSS](https://basecoatui.com/llms.txt)
-- [BasecoatCSS Kitchen Sink of Components](https://basecoatui.com/kitchen-sink/)
+- [Semantics UI](https://github.com/cameronapak/semantics-ui)
 - [Datastar](https://data-star.dev/docs)
 - [Bknd](https://docs.bknd.io/llms-full.txt)

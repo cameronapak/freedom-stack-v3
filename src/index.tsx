@@ -24,16 +24,16 @@ app.get('/', async (c) => {
 
   return c.html(
     <Layout>
-      <section data-signals:content="''" class="mx-auto max-w-screen-sm flex flex-col gap-4 grow p-6">
-        <div class="flex items-center gap-2">
-          <h1 class="text-4xl grow font-bold text-muted-foreground">Microblog</h1>
+      <section data-signals:content="''" class="container max-w-screen-sm y-stack">
+        <div class="x-stack">
+          <h1 class="w-full">Microblog</h1>
           <div class="flex flex-wrap items-center gap-2">
-            <a href="/admin" class="btn-sm-outline">
-              Admin
+            <a href="/admin">
+              <button data-variant="outline">Admin</button>
             </a>
             {isAuthenticated && (
-              <a href="/api/auth/logout" class="btn-sm-outline">
-                Logout
+              <a href="/api/auth/logout">
+                <button data-variant="outline">Log Out</button>
               </a>
             )}
           </div>
@@ -55,15 +55,15 @@ app.get('/', async (c) => {
           </form>
         ) : (
           <div class="flex items-center gap-2 text-sm text-muted-foreground">
-            <a href="/admin" class="btn-sm">
-              Sign in to post
+            <a href="/admin">
+              <button>Sign in to post</button>
             </a>
           </div>
         )}
 
         <div id="posts-container">
           {posts && posts.length > 0 ? (
-            <ul id="posts" class="flex flex-col gap-4">
+            <ul id="posts" class="y-stack p-0">
               {posts.map((post) => {
                 return (
                   <PostItem

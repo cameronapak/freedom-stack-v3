@@ -18,14 +18,11 @@ export const Layout: FC = ({ title = 'Home', children, head = null }: PropsWithC
           [un-cloak] {
             display: none;
           }
-
-          .text-muted-foreground {
-            color: oklch(0.708 0 0);
-          }
         `}</Style>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/basecoat.cdn.min.css" />
+        {/*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/basecoat.cdn.min.css" />*/}
+        <link href="https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.css" type="text/css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
-        <script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/js/all.min.js" defer></script>
+        {/*<script src="https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/js/all.min.js" defer></script>*/}
         <script src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.6/bundles/datastar.js" type="module"></script>
         {head}
       </head>

@@ -21,15 +21,15 @@ export function PostItem({ postId, content, createdAt, url, showDeleteButton = f
   }
 
   return (
-    <li id={`post-${postId}`} class="card p-4 border rounded-lg relative">
-      <div class="flex flex-col gap-2">
+    <li id={`post-${postId}`} class="card w-full border rounded-lg relative">
+      <section class="flex flex-col gap-2">
         {url && (
-          <a href={url} target="_blank" class="text-xs text-muted-foreground">
+          <a href={url} target="_blank">
             {url}
           </a>
         )}
         <div class="flex items-start justify-between gap-2">
-          <p class="text-sm leading-relaxed flex-1">{content}</p>
+          <p>{content}</p>
           {showDeleteButton ? (
             <button
               data-on:click={`if(confirm('Are you sure you want to delete this post?')) { @delete('/delete-post/${postId}') }`}
@@ -42,7 +42,7 @@ export function PostItem({ postId, content, createdAt, url, showDeleteButton = f
           ) : null}
         </div>
         {createdAt && <time class="text-xs text-muted-foreground">{formatDate(createdAt)}</time>}
-      </div>
+      </section>
     </li>
   )
 }
