@@ -27,13 +27,17 @@ app.get('/', async (c) => {
       <section data-signals:content="''" class="container max-w-screen-sm y-stack">
         <div class="x-stack">
           <h1 class="w-full">Microblog</h1>
-          <div class="flex flex-wrap items-center gap-2">
+          <div class="x-stack">
             <a href="/admin">
-              <button data-variant="outline">Admin</button>
+              <button data-size="sm" data-variant="outline">
+                Admin
+              </button>
             </a>
             {isAuthenticated && (
               <a href="/api/auth/logout">
-                <button data-variant="outline">Log Out</button>
+                <button data-size="sm" data-variant="outline">
+                  Log Out
+                </button>
               </a>
             )}
           </div>
