@@ -31,6 +31,7 @@ declare module 'bknd' {
 }
 
 const config = code<BunBkndConfig>({
+  // const config = code<NodeBkndConfig>({
   connection: sqlite({ url: 'file:data.db' }),
   config: {
     media: {

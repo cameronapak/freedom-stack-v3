@@ -5,22 +5,22 @@
   "private": true,
   "scripts": {
     "dev": "bun run --hot src/index.tsx",
-    "seed": "bun node_modules/.bin/bknd sync --seed --force",
+    "seed": "bknd sync --seed --force",
     "update-bknd-skills": "bunx add-skill cameronapak/bknd-skills"
   },
   "devDependencies": {
     "@types/bun": "1.3.8",
-    "@types/jsdom": "^27.0.0"
+    "@types/jsdom": "^28.0.0"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
     "@starfederation/datastar-sdk": "^1.0.0-RC.3",
-    "bknd": "0.20.0",
+    "bknd": "^0.21.0-rc.0",
     "defuddle": "^0.6.6",
     "hono": "^4.11.7",
-    "jsdom": "^27.4.0",
+    "jsdom": "^28.1.0",
     "sqlocal": "^0.16.0"
   }
 }
