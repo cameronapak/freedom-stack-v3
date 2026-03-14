@@ -16,12 +16,12 @@ const schema = em(
       content: text().required(),
       url: text(),
     }),
-  }
+  },
   // Bug: this fails because `Field "created_at" not found on entity "posts"`
   // This may be a race condition of the timestamps plugin and indexing
-  // ({ index }, { posts }) => {
-  //   index(posts).on(['created_at'])
-  // }
+  ({ index }, { posts }) => {
+    index(posts).on(['created_at'])
+  }
 )
 
 // Register the schema to get automatic type completion
@@ -30,8 +30,8 @@ declare module 'bknd' {
   interface DB extends Database {}
 }
 
+// const config = code<NodeBkndConfig>({
 const config = code<BunBkndConfig>({
-  // const config = code<NodeBkndConfig>({
   connection: sqlite({ url: 'file:data.db' }),
   config: {
     media: {
