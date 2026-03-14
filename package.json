@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "bun run --hot src/index.tsx",
-    "seed": "bknd sync --seed --force",
+    "seed": "bun node_modules/.bin/bknd sync --seed --force",
     "update-bknd-skills": "bunx add-skill cameronapak/bknd-skills"
   },
   "devDependencies": {
