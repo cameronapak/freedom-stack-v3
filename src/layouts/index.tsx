@@ -15,6 +15,10 @@ export const Layout: FC = ({ title = 'Home', children, head = null }: PropsWithC
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
         <Style>{css`
+          @view-transition {
+            navigation: auto;
+          }
+
           [un-cloak] {
             display: none;
           }
