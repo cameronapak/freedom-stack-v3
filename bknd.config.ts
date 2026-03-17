@@ -10,19 +10,12 @@ import { secureRandomString } from 'bknd/utils'
 
 const local = registerLocalMediaAdapter()
 
-const schema = em(
-  {
-    posts: entity('posts', {
-      content: text().required(),
-      url: text(),
-    }),
-  }
-  // Bug: this fails because `Field "created_at" not found on entity "posts"`
-  // This may be a race condition of the timestamps plugin and indexing
-  // ({ index }, { posts }) => {
-  //   index(posts).on(['created_at'])
-  // }
-)
+const schema = em({
+  posts: entity('posts', {
+    content: text().required(),
+    url: text(),
+  }),
+})
 
 // Register the schema to get automatic type completion
 type Database = (typeof schema)['DB']
@@ -70,8 +63,7 @@ const config = code<BunBkndConfig>({
       timestamps({
         // the entities to add timestamps to
         entities: ['posts'],
-        // whether to set the `updated_at` field on create, defaults to true
-        setUpdatedOnCreate: true,
+        indexStrategy: 'composite', // or "individual"
       }),
     ],
     // If you want this seed to run, you must manually run the seed command
